@@ -17,3 +17,7 @@ plot(y)
 plot(x,y)
  #Reduce size of the points
 plot(x,y,cex=.5,col="blue")
+
+
+##Add regression line
+abline (lm(y~x), lty=2, col="red", lwd=2)
