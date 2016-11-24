@@ -43,8 +43,16 @@ AAS<-c(0.779,0.660)
 EAT<-c(0.192,0.468)
 
 ui <- fluidPage(
-  
+  titlePanel("Comparing behavioral mean and variation across species"),
+  sidebarLayout(
+    sidebarPanel(
+      uiOutput("Behavior")
+    ),
+  mainPanel ("Display results",
+             plotOutput("bar"))
+  )
 )
+
 
 server <- function(input, output) {}
 
