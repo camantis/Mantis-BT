@@ -14,7 +14,7 @@ server <- function(input, output) {
   })
   
   model<-paste ("m",x,sep="")
-  get
+  get(model)
 }
 
 
