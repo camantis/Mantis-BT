@@ -13,7 +13,11 @@ ui <- fluidPage(
               choices=c("Latency to move", "Time to leave circle", 
                         "Time to reach shelter", "Latency to approach novel prey", 
                         "Time to strike novel prey", "Number of prey items eaten")),
-  plotOutput("behavior")
+      mainPanel(
+        plotOutput("behavior"),
+        hr(),
+        plotOutput("variation")
+      )
 )
 )
 )
