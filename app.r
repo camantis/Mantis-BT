@@ -36,30 +36,43 @@ mrdata<-subset(mantids,species=="M.r",
 
 #Eaten model
 sleat<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
+
 mreat<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
 
 #LTM
-sl.ltm <- lmer(bold.LTM.log ~ 1 + species + sex + mass.c + (1|id),
+sl.ltm <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
                    data = sldata)
-mr.ltm <- lmer(bold.LTM.log ~ 1 + species + sex + mass.c + (1|id),
+mr.ltm <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
                data = mrdata)
 
 #LTLC
-sl.ltlc<-lmer(bold.TTLC.log ~ 1 + species + sex + mass.c + (1|id),
+sl.ltlc<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
               data = sldata)
 
-mr.ltlc<-lmer(bold.TTLC.log ~ 1 + species + sex + mass.c + (1|id),
+mr.ltlc<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
               data = mrdata)
 
 #TTS
 
-sl.tts<-
+sl.tts<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
+             data = sldata)
   
-mr.tts<-
+mr.tts<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
+             data = mrdata)
 
 
+#Approach models
+sl.app<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
+        data = sldata)
 
-
+mr.app<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
+             data = mrdata)
+#Strike models
+sl.st<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
+             data = sldata)
+  
+mr.st<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
+             data = mrdata)
 
 #BOOTSTRAP SUCKAS
 calc.icc<-function(y){
