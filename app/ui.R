@@ -10,15 +10,13 @@ ui <- fluidPage(
       passwordInput ("postgresPwd","Enter password"),
       selectInput(inputId = "choose",
               label="Choose Behavior",
-              choices=c("Latency to move", "Time to leave circle", 
-                        "Time to reach shelter", "Latency to approach novel prey", 
-                        "Time to strike novel prey", "Number of prey items eaten")),
+              choices=behavList)),
       mainPanel(
+        textOutput("text1"),
         plotOutput("behavior"),
         hr(),
         plotOutput("variation")
       )
-)
 )
 )
 

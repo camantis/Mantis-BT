@@ -55,9 +55,12 @@ mrdata<-subset(mantids,species=="M.r",
 
 #Eaten model
 m1<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
-
+mean(sldata$eaten)
+mean(mrdata$eaten)
+summary(m1)
 m2<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
 
+m2
 #LTM
 m3 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
            data = sldata)
@@ -97,7 +100,9 @@ m12<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
 
 
 ##MOdels for mean behavior??
-
+behavList <- c("Latency to move", "Time to leave circle", 
+  "Time to reach shelter", "Latency to approach novel prey", 
+  "Time to strike novel prey", "Number of prey items eaten")
 #BOOTSTRAP for repeatability 
 calc.icc<-function(y){
   sumy<-summary(y)
@@ -111,3 +116,17 @@ test.icc<-function(y){
   (sumy$varcor$id[1])
 }
 
+#To plot variance use arrows ()
+
+
+
+
+#pull.model
+fetchModel <- function(behavNb)
+{
+  model1 <- get(paste("m",behavNb,"1",sep=""))
+  model2 <- get(paste("m",behavNb,"2",sep=""))
+  return(list(model1,model2))
+}
+
+fetchModel(input$choose)

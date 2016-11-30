@@ -13,10 +13,24 @@ server <- function(input, output) {
     return(con)
   })
   
-  model<-paste ("m",x,sep="")
-  get(model)
+  index<-reactive({
+return(which(behavList==input$choose))
+  })
+  
+  
+  output$text1<- renderText({
+    index()
+  })
+  
+  model<-reactive(
+    {
+      cat(stderr(), input$choose)
+      
+    }
+  )
+  
+  
 }
-
 
 
 #Solution 2
