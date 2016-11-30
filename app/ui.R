@@ -13,9 +13,7 @@ ui <- fluidPage(
               choices=behavList)),
       mainPanel(
         textOutput("text1"),
-        plotOutput("behavior"),
-        hr(),
-        plotOutput("variation")
+        plotOutput("behavior")
       )
 )
 )

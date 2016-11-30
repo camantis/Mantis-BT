@@ -54,48 +54,49 @@ mrdata<-subset(mantids,species=="M.r",
 #But I want BOTH models to be called for one choice in order to compare variation between species
 
 #Eaten model
-m1<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
+m11<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
+
 mean(sldata$eaten)
 mean(mrdata$eaten)
-summary(m1)
-m2<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
+summary(m11)
+m12<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
 
-m2
+
 #LTM
-m3 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
+m21 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
            data = sldata)
 
-m4 <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
+m22 <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
            data = mrdata)
 
 #LTLC
-m5<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
+m31<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
          data = sldata)
 
-m6<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
+m32<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
          data = mrdata)
 
 #TTS
 
-m7<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
+m41<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
          data = sldata)
 
-m8<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
+m42<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
          data = mrdata)
 
 
 #Approach models
-m9<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
+m51<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
           data = sldata)
 
-m10<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
+m52<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
           data = mrdata)
 
 #Strike models
-m11<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
+m61<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
            data = sldata)
 
-m12<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
+m62<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
            data = mrdata)
 
 
@@ -128,5 +129,3 @@ fetchModel <- function(behavNb)
   model2 <- get(paste("m",behavNb,"2",sep=""))
   return(list(model1,model2))
 }
-
-fetchModel(input$choose)

@@ -13,6 +13,13 @@ server <- function(input, output) {
     return(con)
   })
   
+  output$DoneConnect <- renderText({ #Refering to doneconnect, declared in UI. Statement saying if dbconnect is null, do nothing.
+    if (is.null(dbconnection())) return(NULL)
+    message <- paste0("SUCCESS! Connected to ", input$postgresDBname , " on ", input$postgresUser, "@", input$postgresHost) #If not null (if connected), return an object with this text
+    return(message)
+  })
+  
+  
   index<-reactive({
 return(which(behavList==input$choose))
   })
@@ -32,6 +39,7 @@ return(which(behavList==input$choose))
   
 }
 
+#fetchModel(input$choose)
 
 #Solution 2
 
