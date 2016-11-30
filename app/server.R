@@ -19,28 +19,29 @@ server <- function(input, output) {
     return(message)
   })
   
+  #Choose from behavList and call that model
+  #Take from index the variance 
+  #Take from index the mean of the response variables 
   
-  index<-reactive({
-return(which(behavList==input$choose))
+  
+  inde<-reactive({
+    return(which(behavList==input$choose))
   })
   
-  
-  output$text1<- renderText({
-    index()
+  trial<-reactive({
+    c(fetchModel(which(behavList==input$choose)))
   })
   
-  model<-reactive(
-    {
-      cat(stderr(), input$choose)
-      
-    }
-  )
-  
-  
+output$behavior<-renderPlot({
+  barplot(trial())
+}
+)
+
 }
 
-#fetchModel(input$choose)
 
+#fetchModel(input$choose)
+#plot(qqnorm(resid(mantid.TTLC)))
 #Solution 2
 
 #call the model

@@ -58,7 +58,7 @@ m11<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
 
 mean(sldata$eaten)
 mean(mrdata$eaten)
-summary(m11)
+
 m12<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
 
 
@@ -68,14 +68,16 @@ m21 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
 
 m22 <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
            data = mrdata)
-
+mean(sldata$bold.LTM.log)
+mean(mrdata$bold.LTM.log)
 #LTLC
 m31<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
          data = sldata)
 
 m32<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
          data = mrdata)
-
+mean(sldata$bold.TTLC.log)
+mean(mrdata$bold.TTLC.log)
 #TTS
 
 m41<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
@@ -84,26 +86,30 @@ m41<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
 m42<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
          data = mrdata)
 
-
+mean(sldata$bold.TTS.log)
+mean(mrdata$bold.TTS.log)
 #Approach models
 m51<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
           data = sldata)
 
 m52<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
           data = mrdata)
-
+mean(sldata$agg_approach)
+mean(mrdata$agg_approach)
 #Strike models
 m61<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
            data = sldata)
 
 m62<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
            data = mrdata)
+mean(sldata$agg_strike)
+mean(mrdata$agg_strike)
 
-
-##MOdels for mean behavior??
-behavList <- c("Latency to move", "Time to leave circle", 
+#Set names of choices to an object in global
+behavList <- c("Number of prey items eaten", "Latency to move", "Time to leave circle", 
   "Time to reach shelter", "Latency to approach novel prey", 
-  "Time to strike novel prey", "Number of prey items eaten")
+  "Time to strike novel prey")
+
 #BOOTSTRAP for repeatability 
 calc.icc<-function(y){
   sumy<-summary(y)
@@ -117,15 +123,27 @@ test.icc<-function(y){
   (sumy$varcor$id[1])
 }
 
+test.icc
 #To plot variance use arrows ()
 
+#Function for mean
+meanbehav<-function(behav)
+{
+  models1<-mean("data"$behav)
+  models2<-mean("data"$behav)
+  return(list(models1,models2))
+}
 
 
-
-#pull.model
+#Function that brings the variance for models associated w/ behavior
 fetchModel <- function(behavNb)
 {
-  model1 <- get(paste("m",behavNb,"1",sep=""))
-  model2 <- get(paste("m",behavNb,"2",sep=""))
-  return(list(model1,model2))
+  model1 <- test.icc(get(paste("m",behavNb,"1",sep="")))
+  model2 <- test.icc(get(paste("m",behavNb,"2",sep="")))
+  return(c(model1,model2))
 }
+
+fetchModel(1)
+fetchModel(2)
+
+#
