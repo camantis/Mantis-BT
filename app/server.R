@@ -29,7 +29,7 @@ server <- function(input, output) {
   })
   
   trial<-reactive({
-    c(fetchModel(which(behavList==input$choose)))
+    c(turb(which(behavList==input$choose)))
   })
   
 output$behavior<-renderPlot({

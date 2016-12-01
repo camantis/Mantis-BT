@@ -126,50 +126,17 @@ test.icc<-function(y){
 test.icc
 #To plot variance use arrows ()
 
-#Function for mean
 
+#Function for mean of each behavior
 
-
-
-meanBehav <- function(behavNb)
-{
-  species1<-mean(get("m",behavNB,"3",sep=""))
-  species2<-mean(get("m",behavNB,"4",sep=""))
-  return(list(species1,species2))
-}
-meanBehav(1)
-m13
-m14
-
-turb<-function(numb)
-{
-  species1<-get("mean"(numb))
-  species2<-get("mean"(numb+1))
-  return(c(species1,species2))
-}
-
-turb(2)
 turb<-function(numb)
 {
 species1<-mean(get(paste("m",numb,"3",sep="")))
 species2<-mean(get(paste("m",numb,"4",sep="")))
 return(c(species1,species2))
 }
-turb(2)
-turb(3)
-turb(4)
-turb(5)
-m83
-turb(6)
-turb(7)
-turb(8)
-m43
-m44
 
-dfdf
-xy*dfdjd
-k2<-mean(c(3,4,1,9,8))
-k3<-mean(c(4,6,28,59,34))
+
 
 #Function that brings the variance for models associated w/ behavior
 fetchModel <- function(behavNb)
@@ -178,16 +145,8 @@ fetchModel <- function(behavNb)
   model2 <- test.icc(get(paste("m",behavNb,"2",sep="")))
   return(c(model1,model2))
 }
-meanBehav(4)
 
 
-fetchModel(1)
-fetchModel(7)
-m33
-
-please<-list(m13,m14,m23,m24,m33,m34,m43,m44,m53,m54,m63,m64)
-
-please
 m13<-sldata$eaten
 m14<-mrdata$eate
 
