@@ -127,6 +127,8 @@ test.icc
 #To plot variance use arrows ()
 
 
+
+
 #Function for mean of each behavior
 
 turb<-function(numb)
@@ -145,6 +147,8 @@ fetchModel <- function(behavNb)
   model2 <- test.icc(get(paste("m",behavNb,"2",sep="")))
   return(c(model1,model2))
 }
+
+
 
 
 m13<-sldata$eaten

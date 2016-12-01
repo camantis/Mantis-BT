@@ -33,7 +33,7 @@ server <- function(input, output) {
   })
   
 output$behavior<-renderPlot({
-  barplot(trial())
+  barplot(trial(),main=paste0("Behavioral mean and variation of ", input$choose))
 }
 )
 
