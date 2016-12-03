@@ -42,19 +42,3 @@ output$behavior<-renderPlot({
 
 #fetchModel(input$choose)
 #plot(qqnorm(resid(mantid.TTLC)))
-#Solution 2
-
-#call the model
-#paste ("m",x,sep="") <---create's a character that has same name has variable used for model
-#To get this model of that name, use function get() 
-
-
-
-
-#Based on what you choose in selectInput
-#renderPlot(barplot(input$choose))
-#The mean and variation of that model is pulled
-
-#The mean and variation of the model is pulled
-#These values are used to create a barplot with mean value and error bars representing variation
-#Binn the 
