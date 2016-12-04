@@ -58,3 +58,21 @@ output$behavior<-renderPlot({
 #The mean and variation of the model is pulled
 #These values are used to create a barplot with mean value and error bars representing variation
 #Binn the 
+  
+                                   
+                                   
+                                   
+                                   
+##Server for Lea's Tab
+  ##Still working on how to query your database properly! I will have to build these models in the global I think
+  
+  output$synscatter <- renderPlot({
+      if(#bold.LTM.log and bold.TTLC.log clicked)
+      plot(LatToMove, LatToLeave, xlab="Latency to move", ylab="Latency to leave circle")
+      else(#bold.TTLC.log and bold.TTS.log)
+      plot(LatToLeave, TimeToShelter, xlab="Latency to leave circle", ylab="Time to reach shelter")
+      
+      
+      ##Include "Number of prey items eaten" "Latency to approach novel prey", "Time to strike novel prey"
+  }),
+                                
