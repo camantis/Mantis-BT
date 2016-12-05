@@ -13,6 +13,7 @@ server <- function(input, output) {
     return(con)
   })
   
+<<<<<<< HEAD
   output$DoneConnect <- renderText({ #Refering to doneconnect, declared in UI. Statement saying if dbconnect is null, do nothing.
     if (is.null(dbconnection())) return(NULL)
     message <- paste0("SUCCESS! Connected to ", input$postgresDBname , " on ", input$postgresUser, "@", input$postgresHost) #If not null (if connected), return an object with this text
@@ -22,6 +23,11 @@ server <- function(input, output) {
   #Choose from behavList and call that model
   #Take from index the variance 
   #Take from index the mean of the response variables 
+=======
+  index<-reactive({
+return(which(behavList==input$choose))
+  })
+>>>>>>> parent of 88b1776... Before I mess with render plot per model
   
   
   inde<-reactive({
@@ -42,7 +48,19 @@ output$behavior<-renderPlot({
 }
 )
 
+<<<<<<< HEAD
 }
+=======
+
+#Solution 2
+
+#call the model
+#paste ("m",x,sep="") <---create's a character that has same name has variable used for model
+#To get this model of that name, use function get() 
+
+
+
+>>>>>>> parent of 88b1776... Before I mess with render plot per model
 
 
 #fetchModel(input$choose)

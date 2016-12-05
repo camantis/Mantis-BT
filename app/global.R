@@ -54,53 +54,58 @@ mrdata<-subset(mantids,species=="M.r",
 #But I want BOTH models to be called for one choice in order to compare variation between species
 
 #Eaten model
-m11<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
-
+m1<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
 mean(sldata$eaten)
 mean(mrdata$eaten)
+<<<<<<< HEAD
 
 m12<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
 
+=======
+summary(m1)
+m2<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
+>>>>>>> parent of 88b1776... Before I mess with render plot per model
 
+m2
 #LTM
-m21 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
+m3 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
            data = sldata)
 
-m22 <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
+m4 <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
            data = mrdata)
 mean(sldata$bold.LTM.log)
 mean(mrdata$bold.LTM.log)
 #LTLC
-m31<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
+m5<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
          data = sldata)
 
-m32<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
+m6<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
          data = mrdata)
 mean(sldata$bold.TTLC.log)
 mean(mrdata$bold.TTLC.log)
 #TTS
 
-m41<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
+m7<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
          data = sldata)
 
-m42<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
+m8<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
          data = mrdata)
 
 mean(sldata$bold.TTS.log)
 mean(mrdata$bold.TTS.log)
 #Approach models
-m51<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
+m9<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
           data = sldata)
 
-m52<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
+m10<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
           data = mrdata)
 mean(sldata$agg_approach)
 mean(mrdata$agg_approach)
 #Strike models
-m61<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
+m11<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
            data = sldata)
 
-m62<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
+m12<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
            data = mrdata)
 mean(sldata$agg_strike)
 mean(mrdata$agg_strike)
@@ -148,6 +153,7 @@ fetchModel <- function(behavNb)
   return(c(model1,model2))
 }
 
+
 x<-1:2
 
 
@@ -174,3 +180,4 @@ m64<-mrdata$agg_strike
 
 
 #
+
