@@ -148,7 +148,7 @@ fetchModel <- function(behavNb)
   return(c(model1,model2))
 }
 
-
+x<-1:2
 
 
 m13<-sldata$eaten

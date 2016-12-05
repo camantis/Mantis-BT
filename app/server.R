@@ -32,8 +32,13 @@ server <- function(input, output) {
     c(turb(which(behavList==input$choose)))
   })
   
+  curb<-reactive({
+    c(fetchModel(which(behavList==input$choose)))
+  })
+  
 output$behavior<-renderPlot({
-  barplot(trial(),main=paste0("Behavioral mean and variation of ", input$choose))
+  barplot(trial(),names.arg=c("S. limbata", "M. religiosa"),ylim=range(c(0,trial()+trial())),main=paste0("Behavioral mean and variation of ", input$choose),ylab="value",border="red")
+  arrows(x, trial()-curb(), x, trial()+curb(), length=0.05,angle=90,code=3)
 }
 )
 
