@@ -55,6 +55,22 @@ output$behavior<-renderPlot({
   barplot(trial(),names.arg=c("S.limbata","M.religiosa"),ylim=range(c(0,trial()+trial())),main=paste0("Behavioral mean and variation of ", input$choose))
   arrows(x, trial()-curb(), x, trial()+curb(), length=0.05,angle=90,code=3)
 })
-  
+
+#Output function for Lea's Tab    
+output$behaviors<-renderPlot({ 
+##Need to rework data frame in R for output for Searching for syndrome's tab:    
+colnames(matids2) <- c("Individual", "Trial", "Behavior_A", "Behavior_B", "Behavior_C", "Behavior_D", "Behavior_E", "Behavior_F") # input$behaviors has to have the same names
+##Create a new data frame with just individual, trial, and the two selected behaviors
+data_selected <- cbind(mantids2[,1:2], mantids2[, input$behaviors])
+##Create a New data frame which averages each variable per individual 
+data_agg <- aggregate(data_selected[,3:4], list(data_selected$Individual), mean)
+colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")
+##Plot this new data frame
+  data_agg %>% 
+  ggplot(aes(x=Behavior_B, y=Behavior_C))+
+  geom_point()+
+  geom_abline()
+})
+    
 }
 
