@@ -9,7 +9,7 @@ library(beepr)
 library(lsmeans)
 library(piecewiseSEM)
 library(MuMIn)
-
+library(ggplot2)
 library(RPostgreSQL)
 drv<-dbDriver("PostgreSQL")
 con<-dbConnect(drv, dbname="lab1",host="localhost",port=5432,user="postgres",password="postgres")
@@ -131,11 +131,14 @@ crush<-function(k)
 {
   tart<-data.frame(eat=get(paste("m",k,"3",sep="")))
   curb<-data.frame(eat=get(paste("m",k,"4",sep="")))
-  tart$mrk<-'sl'
-  curb$mrk<-'mr'
+  tart$species<-'sl'
+  curb$species<-'mr'
   lvegLengths<-rbind(tart,curb)
   return(lvegLengths)
 }
+
+
+
 
 
 #Function that brings the variance for models associated w/ behavior
@@ -145,6 +148,9 @@ fetchModel <- function(behavNb)
   model2 <- test.icc(get(paste("m",behavNb,"2",sep="")))
   return(c(model1,model2))
 }
+
+
+
 
 
 x<-1:2

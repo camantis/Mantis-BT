@@ -48,7 +48,7 @@ return(which(behavList==input$choose))
   })
   
   output$variation<-renderPlot({
-    gplot(kik,aes(rip,fill=mrk))+geom_density(alpha=.2)
+    ggplot(kik(),aes(rip(),fill=species))+geom_density(alpha=.2)
   })
   
 output$behavior<-renderPlot({
