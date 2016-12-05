@@ -59,7 +59,14 @@
     sidebarPanel(
       br(),
       img(src="mantis.jpg"),
-      checkboxGroupInput("behaviors","Behaviors:",choices=behavList),
+      checkboxGroupInput("behaviors","Behaviors:",choices = 
+        c("Number of prey items eaten"= mantids$eaten, 
+          "Latency to move"" = mantids$bold.LTM.log, 
+          "Time to leave circle" = mantids$bold.TTLC.log,
+          "Time to reach shelter" = mantids$bold.TTS.log, 
+          "Latency to approach novel prey" = mantids$agg_approach, 
+          "Time to strike novel prey" = mantids$agg_strike
+          ),
       br(),
       br()
     ),
