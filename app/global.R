@@ -154,7 +154,10 @@ fetchModel <- function(behavNb)
 }
 
 
+<<<<<<< HEAD
 x<-1:2
+=======
+>>>>>>> parent of e205640... Adding error bars to barchart
 
 
 m13<-sldata$eaten
