@@ -48,6 +48,9 @@ sldata <- subset(mantids, species=="S.l",
 mrdata<-subset(mantids,species=="M.r",
                select=id:max.mass.c)
 
+#subset DataFrame for Lea's Tab with only Inidividual, Trial, and the 6 Behaviors - not sure I did this right!
+mantids2$ <- subset(mantids, select =mantids$trial, mantids$eaten, mantids$bold.LTM.log, mantids$bold.TTLC.log, mantids$bold.TTS.log, mantids$agg_approach, mantids$aggstrike)
+
 #Models for variance
 
 
