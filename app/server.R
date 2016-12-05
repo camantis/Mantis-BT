@@ -59,7 +59,7 @@ output$behavior<-renderPlot({
 #Output function for Lea's Tab    
 output$behaviors<-renderPlot({ 
 ##Need to rework data frame in R for output for Searching for syndrome's tab:    
-colnames(matids2) <- c("Individual", "Trial", "Behavior_A", "Behavior_B", "Behavior_C", "Behavior_D", "Behavior_E", "Behavior_F") # input$behaviors has to have the same names
+##input$behaviors should already have the same colnames as dataframe mantids2
 ##Create a new data frame with just individual, trial, and the two selected behaviors
 data_selected <- cbind(mantids2[,1:2], mantids2[, input$behaviors])
 ##Create a New data frame which averages each variable per individual 
