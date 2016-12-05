@@ -11,6 +11,8 @@ library(piecewiseSEM)
 library(MuMIn)
 library(ggplot2)
 library(RPostgreSQL)
+
+library(dplyr)
 drv<-dbDriver("PostgreSQL")
 con<-dbConnect(drv, dbname="lab1",host="localhost",port=5432,user="postgres",password="postgres")
 dbListTables(con)##returns a vector object
@@ -49,8 +51,8 @@ mrdata<-subset(mantids,species=="M.r",
                select=id:max.mass.c)
 
 #subset DataFrame for Lea's Tab with only Inidividual, Trial, and the 6 Behaviors - not sure I did this right!
-mantids2$ <- subset(mantids, select =mantids$trial, mantids$eaten, mantids$bold.LTM.log, mantids$bold.TTLC.log, mantids$bold.TTS.log, mantids$agg_approach, mantids$aggstrike)
-
+mantids2 <- cbind(mantids$id, mantids$trial, mantids$eaten, mantids$bold.LTM.log, mantids$bold.TTLC.log, mantids$bold.TTS.log, mantids$agg_approach, mantids$agg_strike)
+colnames(mantids2)<-c("id","trial","eaten","bold.LTM.log","bolt.TTLC.log","bold.TTS.log","agg_approach","agg_strike")
 #Models for variance
 
 

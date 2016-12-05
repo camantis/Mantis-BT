@@ -4,7 +4,7 @@
   #Tem
   library(shinythemes)
   ui<- fluidPage(theme=shinytheme("darkly"),
-  headerPanel("CA Mantis"),
+  mainPanel(
   #Tem
   tabsetPanel(
     tabPanel("Connect","Connect to Database"),
@@ -17,10 +17,11 @@
         passwordInput("postgresPwd","Enter password"),
         actionButton("postgresConnect",label="Connect"),
         br(),
-        br(),
+        br()),
+      mainPanel(
+        hr(),
         textOutput("DoneConnect")
-      )
-    )
+      )),
   tabPanel("welcome","Welcome to the CA Mantis Shiny App"),
   sidebarLayout(
     sidebarPanel(),
@@ -51,7 +52,7 @@
         Latency to begin approaching the crab and time it took to ellicit a predatory
         strike was recorded.")
       )
-      )
+      ),
   
   #TEMP
   tabPanel("Searching for Syndromes", "Check two behaviors to look for syndromes"),
@@ -60,28 +61,27 @@
       br(),
       img(src="mantis.jpg"),
       checkboxGroupInput("behaviors","Behaviors:",choices = 
-        c("Number of prey items eaten"= mantids$eaten, 
-          "Latency to move"" = mantids$bold.LTM.log, 
-          "Time to leave circle" = mantids$bold.TTLC.log,
-          "Time to reach shelter" = mantids$bold.TTS.log, 
-          "Latency to approach novel prey" = mantids$agg_approach, 
-          "Time to strike novel prey" = mantids$agg_strike
+        c("Number of prey items eaten"= "eaten", 
+          "Latency to move" = "bold.LTM.log", 
+          "Time  leave circle" = "bold.TTLC.log",
+          "Time  reach shelter" = "bold.TTS.log", 
+          "Latency  approach novel prey" = "agg_approach", 
+          "Time  strike novel prey" ="agg_strike")
           ),
       br(),
       br()
     ),
     mainPanel(
       hr(),
-      plotOutput(OutputID="synscatter",label="syn") 
-    )
-  )
+      plotOutput("behaviors")
+    ))
+  ,
   
   
   
   
-  tabsetPanel(
-    
-  tabPanel("Behavioral differences","Compare mean and variation of behavioral traits"),
+
+    tabPanel("Behavioral differences","Compare mean and variation of behavioral traits"),
     sidebarLayout(
     sidebarPanel(
       br(),
@@ -96,6 +96,7 @@
         plotOutput("variation")
         
       )
+)
 )
 )
 )

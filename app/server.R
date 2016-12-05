@@ -63,7 +63,7 @@ output$behaviors<-renderPlot({
 ##Create a new data frame with just individual, trial, and the two selected behaviors
 data_selected <- cbind(mantids2[,1:2], mantids2[, input$behaviors])
 ##Create a New data frame which averages each variable per individual 
-data_agg <- aggregate(data_selected[,3:4], list(data_selected$Individual), mean)
+data_agg <- aggregate(data_selected[,3:4], list(data_selected$id), mean)
 colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")
 ##Plot this new data frame
   data_agg %>% 
