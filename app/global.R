@@ -118,6 +118,24 @@ species2<-mean(get(paste("m",numb,"4",sep="")))
 return(c(species1,species2))
 }
 
+#Function to get the number of responses per behavior
+tnum<-function(n)
+{
+  count1<-get(paste("m",n,"3",sep=""))
+  count2<-get(paste("m",n,"4",sep=""))
+  return(c(count1,count2))
+}
+
+#Function that creates dataframe of length ready to be used for density plot
+crush<-function(k)
+{
+  tart<-data.frame(eat=get(paste("m",k,"3",sep="")))
+  curb<-data.frame(eat=get(paste("m",k,"4",sep="")))
+  tart$mrk<-'sl'
+  curb$mrk<-'mr'
+  lvegLengths<-rbind(tart,curb)
+  return(lvegLengths)
+}
 
 
 #Function that brings the variance for models associated w/ behavior
@@ -155,5 +173,5 @@ m64<-mrdata$agg_strike
 
 
 
-#
+
 

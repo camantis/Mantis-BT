@@ -43,11 +43,6 @@ ui <- fluidPage(
   tabPanel("Behavioral differences","Compare mean and variation of behavioral traits"),
     sidebarLayout(
     sidebarPanel(
-      textInput("postgresDBname", "Enter Database Name"),
-      textInput("postgresUser", "Enter username"),
-      textInput("postgresPort", "Enter Port number"),
-      textInput("postgresHost", "Enter host name"),
-      passwordInput ("postgresPwd","Enter password"),
       selectInput(inputId = "choose",
               label="Choose Behavior",
               choices=behavList)),
