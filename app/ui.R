@@ -2,7 +2,13 @@
 ui <- fluidPage(
   #Add theme to fluidpage 
   #Tem
-  tabsetPanel(
+  library(shinythemes)
+  
+  
+  
+  fluidpage(theme=shinytheme("darkly"),
+  
+   tabsetPanel(
     tabPanel("Connect","Connect to Database"),
     sidebarLayout(
       sidebarPanel(
