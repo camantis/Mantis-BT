@@ -54,61 +54,36 @@ mrdata<-subset(mantids,species=="M.r",
 #But I want BOTH models to be called for one choice in order to compare variation between species
 
 #Eaten model
-m1<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
-mean(sldata$eaten)
-mean(mrdata$eaten)
-<<<<<<< HEAD
+m11<-glmer(eaten~1+sex+mass.c+(1|id),data=sldata,family=poisson)
+
 
 m12<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
 
-=======
-summary(m1)
-m2<-glmer(eaten~1+sex+mass.c+(1|id),data=mrdata,family=poisson)
->>>>>>> parent of 88b1776... Before I mess with render plot per model
 
-m2
+
+
 #LTM
-m3 <- lmer(bold.LTM.log ~ 1 + sex + mass.c + (1|id),
-           data = sldata)
-
-m4 <- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
-           data = mrdata)
-mean(sldata$bold.LTM.log)
-mean(mrdata$bold.LTM.log)
-#LTLC
-m5<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
-         data = sldata)
-
-m6<-lmer(bold.TTLC.log ~ 1  + sex + mass.c + (1|id),
-         data = mrdata)
-mean(sldata$bold.TTLC.log)
-mean(mrdata$bold.TTLC.log)
-#TTS
-
-m7<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
-         data = sldata)
-
-m8<-lmer(bold.TTS.log ~ 1  + sex + mass.c + (1|id),
-         data = mrdata)
-
-mean(sldata$bold.TTS.log)
-mean(mrdata$bold.TTS.log)
-#Approach models
-m9<- lmer(agg_approach ~ 1 + sex + mass.c + (1|id),
-          data = sldata)
-
-m10<-lmer(agg_approach ~ 1  + sex + mass.c + (1|id),
+m21<- lmer(bold.LTM.log ~ 1  + sex + mass.c + (1|id),
+                   data = sldata)
+m22<-lmer(bold.LTM.log ~ 1 +  sex + mass.c + (1|id),
           data = mrdata)
-mean(sldata$agg_approach)
-mean(mrdata$agg_approach)
-#Strike models
-m11<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
-           data = sldata)
+#TTLC
+m31<-lmer(bold.TTLC.log~1+sex+mass.c+(1|id),data=sldata)
 
-m12<- lmer(agg_strike ~ 1 + sex + mass.c + (1|id),
-           data = mrdata)
-mean(sldata$agg_strike)
-mean(mrdata$agg_strike)
+m32<-lmer(bold.TTLC.log~1+sex+mass.c+(1|id),data=mrdata)
+
+#TTS
+m41<-lmer(bold.TTS.log~1+sex+mass.c+(1|id),data=sldata)
+m42<-lmer(bold.TTS.log~1+sex+mass.c+(1|id),data=mrdata)
+
+#App
+m51<-lmer(agg_approach~1+sex+mass.c+(1|id),data=sldata)
+m52<-lmer(agg_approach~1+sex+mass.c+(1|id),data=mrdata)
+
+
+#Strike
+m61<-lmer(agg_strike~1+sex+mass.c+(1|id),data=sldata)
+m62<-lmer(agg_strike~1+sex+mass.c+(1|id),data=mrdata)
 
 #Set names of choices to an object in global
 behavList <- c("Number of prey items eaten", "Latency to move", "Time to leave circle", 
@@ -128,7 +103,7 @@ test.icc<-function(y){
   (sumy$varcor$id[1])
 }
 
-test.icc
+
 #To plot variance use arrows ()
 
 
@@ -154,10 +129,8 @@ fetchModel <- function(behavNb)
 }
 
 
-<<<<<<< HEAD
 x<-1:2
-=======
->>>>>>> parent of e205640... Adding error bars to barchart
+
 
 
 m13<-sldata$eaten

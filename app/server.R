@@ -12,8 +12,6 @@ server <- function(input, output) {
     con <- dbConnect(drv=drv, dbname = input$postgresDBname, host = input$postgresHost, port = input$postgresPort, user = input$postgresUser, password = input$postgresPwd) #Establish new connection-these are the textbox names
     return(con)
   })
-  
-<<<<<<< HEAD
   output$DoneConnect <- renderText({ #Refering to doneconnect, declared in UI. Statement saying if dbconnect is null, do nothing.
     if (is.null(dbconnection())) return(NULL)
     message <- paste0("SUCCESS! Connected to ", input$postgresDBname , " on ", input$postgresUser, "@", input$postgresHost) #If not null (if connected), return an object with this text
@@ -23,11 +21,10 @@ server <- function(input, output) {
   #Choose from behavList and call that model
   #Take from index the variance 
   #Take from index the mean of the response variables 
-=======
+
   index<-reactive({
 return(which(behavList==input$choose))
   })
->>>>>>> parent of 88b1776... Before I mess with render plot per model
   
   
   inde<-reactive({
@@ -38,25 +35,13 @@ return(which(behavList==input$choose))
     c(turb(which(behavList==input$choose)))
   })
   
+  curb<-reactive({
+    c(fetchModel(which(behavList==input$choose)))
+  })
+  
 output$behavior<-renderPlot({
-  barplot(trial(),main=paste0("Behavioral mean and variation of ", input$choose))
+  barplot(trial(),names.arg=c("S.limbata","M.religiosa"),ylim=range(c(0,trial()+trial())),main=paste0("Behavioral mean and variation of ", input$choose))
+  arrows(x, trial()-curb(), x, trial()+curb(), length=0.05,angle=90,code=3)
+})
+  
 }
-)
-
-<<<<<<< HEAD
-}
-=======
-
-#Solution 2
-
-#call the model
-#paste ("m",x,sep="") <---create's a character that has same name has variable used for model
-#To get this model of that name, use function get() 
-
-
-
->>>>>>> parent of 88b1776... Before I mess with render plot per model
-
-
-#fetchModel(input$choose)
-#plot(qqnorm(resid(mantid.TTLC)))
