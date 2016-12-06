@@ -33,7 +33,6 @@ mantids$bold.LTM <- mantids$bold_ltm + 1
 mantids$bold.LTM.log <- log(mantids$bold.LTM)
 
 
-
 mantids$bold.TTLC.log <- log(mantids$bold_leave_circle)
 mantids$bold.TTS.log <- log(mantids$bold_time_shelter)# center mass
 mantids$mass.c <- (mantids$start_mass - mean(mantids$start_mass, na.rm=TRUE))/sd(mantids$start_mass, na.rm=TRUE)
@@ -95,8 +94,137 @@ behavList <- c("Number of prey items eaten", "Latency to move", "Time to leave c
   "Time to reach shelter", "Latency to approach novel prey", 
   "Time to strike novel prey")
 
+#Based on your choice, run this function to get the response values for the behavior
+collide<-function(v)
+{
+  beh<-get(paste("d",v,sep=""))
+  return(beh)
+}
+
+#We need to combine BOTH behavior values into one
+
+#Can name the function that cbinds the two behaviors
+
+#flip<-collide(2)
+#sikh<-collide(3)
+#nexus<-cbind(flip,sikh)
+#nexus<-cbind(collide(3),collide(4))
+#nexus
+#Necessary for the collide function
+d1<-mantids$eaten
+d2<-mantids$bold.LTM.log
+d3<-mantids$bold.TTLC.log
+d4<-mantids$bold.TTS.log
+d5<-mantids$agg_approach
+d6<-mantids$agg_strike
+
+synlist<-cbind(d1,d2,d3,d4,d5,d6)
+colnames(synlist)<-
+  c("Number of prey items eaten", "Latency to move", "Time to leave circle", 
+    "Time to reach shelter", "Latency to approach novel prey", 
+    "Time to strike novel prey")
+
+
+
+#collide<-function(v)
+#{
+ # beh<-get(paste("d",v,sep=""))
+  #return(beh)
+#}
+#cratos<-collide(1)
+#platos<-collide(2)
+#unicron<-sentient(cratos,platos)
+#unicron
+#cyborg<-plof(unicron)
 idtri<-cbind(mantids$id,mantids$trial)
-id<-mantids$id
+
+#Organizes the data from cratos and combines with idtri
+#id
+
+
+
+
+#sim<-plof(platos,cratos)
+#sim
+#cratos<-collide(6)
+#platos<-collide(2)
+#unicron<-sentient(cratos,platos)
+#cyborg<-plof(unicron)
+#cyborg
+#cyborg<-plof(unicron)
+#data_selected<-cbind(idtri,dupe)
+#data_selected
+#data_selected[id]
+#data_agg<-aggregate(data_selected[,2:4],list(data_selected[id]),mean)
+#data_agg
+#colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")
+#data_agg
+##Plot this new data frame
+#fix %>% 
+ #ggplot(aes(x=Behavior_B, y=Behavior_C))+
+  #geom_point()+
+  #geom_abline()
+
+#plof
+#dupe<-cbind(cratos,platos)
+
+#ful<-cbind(id,tri)
+#fix<-galv(1,2)
+
+galv<-function(zeta,tron){
+  cruton<-collide(zeta)
+  suton<-collide(tron)
+  centroid<-cbind(cruton,suton)
+  data_selected<-cbind(idtri,centroid)
+  data_agg<-aggregate(data_selected[,2:4],list(data_selected[,1]),mean)
+  colnames(data_agg)<-c("Individual","Trial","Behavior_B","Behavior_C")
+  return(rbind(data_agg))
+}
+#zeta<-collide(1)
+#tron<-collide(3)
+#collide<-function(v)
+#{
+# beh<-get(paste("d",v,sep=""))
+#return(beh)
+#}
+sentient<-function(cratos,platos){
+  centroid<-cbind(cratos,platos)
+  return(centroid)
+}
+#sentient(cratos,platos)
+#unicron
+#idtri
+#unicron<-sentient(cratos,platos)
+plof<-function(unicron){
+  data_selected<-cbind(idtri,unicron)
+  data_agg<-aggregate(data_selected[,2:4],list(data_selected[,1]),mean)
+  colnames(data_agg)<-c("Individual","Trial","Behavior_B","Behavior_C")
+  return(rbind(data_agg))
+}
+
+#names the results from the plof function
+#regal<-data.frame(cratos,platos,id)
+#regal
+#data_agg<-aggregate(regal[,1:2],list(regal$id),mean)
+#data_agg
+
+#data_selected <- data.frame(id,tri,data_agg)
+#data_selected
+#data_agg <- aggregate.data.frame(data_selected[,3:4], list(data_selected$id), mean)
+#data_agg
+#check<-data.frame(id,tri,data_agg)
+#check
+#colnames(data_agg) <- c( "Trial", "Behavior_B", "Behavior_C")
+#data_agg
+#colnames(data_agg)
+
+#?aggregate
+
+
+
+
+
+
 
 #BOOTSTRAP for repeatability 
 calc.icc<-function(y){

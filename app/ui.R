@@ -3,6 +3,7 @@
   #Add theme to fluidpage 
   #Tem
   library(shinythemes)
+  
   ui<- fluidPage(theme=shinytheme("darkly"),
   titlePanel ("CA Mantis"),
   #Tem
@@ -22,25 +23,26 @@
         hr(),
         textOutput("DoneConnect")
       ))),
-  tabPanel("welcome","Welcome to the CA Mantis Shiny App",
+  tabPanel("Welcome","Welcome to the CA Mantis Shiny App",
   sidebarLayout(
     sidebarPanel(),
     mainPanel(
       img(src="cover.jpg"),
       p("Welcome to the CA Mantis shiny app. With this application,
-        you will be able to visualize statistical results from a recent
+        you will be able to visualize statistical results from a recent study
         comparing the behavior of two species of praying mantids"),
       p("The CA Mantis study was designed to determine how the behavioral phenotype
         structure differs between native and invasive species of praying mantids present
-        in northern California,"),
-      em("Stagmomantis limbata and Mantis religiosa"),
+        in northern California,", span(em("Stagmomantis limbata and Mantis religiosa")),"and how
+        several behavioral traits are correlated with one another."),
       p(span(em("M. religiosa")), "is recently established and evidence suggests
         it is displacing", span(em("S. limbata")), "from the local habitat."),
-      p("In this app, you will be able to look at the compare the results of
+      img(src="hopper.jpg"),
+      p("In this app, you will be able to compare the results of
         the behavioral assays across species to look at both mean and variation of behaviors as 
         well as correlations between behaviors."),
-      img(src="s_l.jpg"),
-      img(src="hopper.jpg"),
+      img(src="s_l.jpg",height=300,width=300),
+      
       p("Number of prey items eaten refers to the voracity of individuals, 
         which were allowed to capture as many prey items as possible in a
         15 minute assay."),
@@ -50,7 +52,7 @@
         movement, exited the area in which they were introduced, and reached shelter."),
       p("Finally, individuals were exposed to a novel prey in the form of a fiddler crab.
         Latency to begin approaching the crab and time it took to ellicit a predatory
-        strike was recorded.")
+        strike were recorded.")
       ))),
   
   #TEMP
@@ -58,9 +60,11 @@
   sidebarLayout(
     sidebarPanel(
       br(),
-      img(src="mantis.jpg"),
-      checkboxGroupInput("behaviors","Behaviors:",choices = behavList
-          ),
+      checkboxGroupInput("behaviors","Behaviors:",
+                         choices =behavList),
+      checkboxGroupInput("behaviors2","Relationship to behavior:",
+                         choices =behavList),
+      
       br(),
       br()
     ),
