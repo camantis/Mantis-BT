@@ -95,6 +95,9 @@ behavList <- c("Number of prey items eaten", "Latency to move", "Time to leave c
   "Time to reach shelter", "Latency to approach novel prey", 
   "Time to strike novel prey")
 
+idtri<-cbind(mantids$id,mantids$trial)
+id<-mantids$id
+
 #BOOTSTRAP for repeatability 
 calc.icc<-function(y){
   sumy<-summary(y)

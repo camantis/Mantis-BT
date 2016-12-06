@@ -60,20 +60,14 @@
     sidebarPanel(
       br(),
       img(src="mantis.jpg"),
-      checkboxGroupInput("behaviors","Behaviors:",choices = 
-        c("Number of prey items eaten"= "eaten", 
-          "Latency to move" = "bold.LTM.log", 
-          "Time  leave circle" = "bold.TTLC.log",
-          "Time  reach shelter" = "bold.TTS.log", 
-          "Latency  approach novel prey" = "agg_approach", 
-          "Time  strike novel prey" ="agg_strike")
+      checkboxGroupInput("behaviors","Behaviors:",choices = behavList
           ),
       br(),
       br()
     ),
     mainPanel(
       hr(),
-      plotOutput("behaviors")
+      plotOutput("syndrome")
     ))
   ,
   

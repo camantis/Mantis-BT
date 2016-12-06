@@ -57,20 +57,36 @@ output$behavior<-renderPlot({
 })
 
 #Output function for Lea's Tab    
-output$behaviors<-renderPlot({ 
+
+indi<-reactive({
+  return(which(behavList==input$behaviors))
+})
+
+
+
+#
+#if(input$action>0 & input$action<=2){
+  isolate({
+    data_selected <- cbind(idtri, indi())
+    data_agg <- aggregate(data_selected[,2:4], list(id), mean)
+    colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")})
 ##Need to rework data frame in R for output for Searching for syndrome's tab:    
 ##input$behaviors should already have the same colnames as dataframe mantids2
 ##Create a new data frame with just individual, trial, and the two selected behaviors
-data_selected <- cbind(mantids2[,1:2], mantids2[, input$behaviors])
+#data_selected <- cbind(idtri, indi())
 ##Create a New data frame which averages each variable per individual 
-data_agg <- aggregate(data_selected[,3:4], list(data_selected$id), mean)
-colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")
+#data_agg <- aggregate(data_selected[,2:4], list(id), mean)
+#colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")
 ##Plot this new data frame
-  data_agg %>% 
+output$syndrome<-renderPlot({  
+ data_agg %>% 
   ggplot(aes(x=Behavior_B, y=Behavior_C))+
   geom_point()+
   geom_abline()
 })
     
 }
+
+
+
 
