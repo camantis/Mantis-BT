@@ -160,17 +160,17 @@ idtri<-cbind(mantids$id,mantids$trial)
 #colnames(data_agg) <- c("Individual", "Trial", "Behavior_B", "Behavior_C")
 #data_agg
 ##Plot this new data frame
-#fix %>% 
+#munch %>% 
  #ggplot(aes(x=Behavior_B, y=Behavior_C))+
-  #geom_point()+
-  #geom_abline()
+#geom_point()+
+ # geom_abline()
 
 #plof
 #dupe<-cbind(cratos,platos)
 
 #ful<-cbind(id,tri)
 #fix<-galv(1,2)
-
+#munch<-galv(6,3)
 galv<-function(zeta,tron){
   cruton<-collide(zeta)
   suton<-collide(tron)

@@ -176,7 +176,7 @@ cyborg<-reactive({
 #cyborg<-reactive({
  # plof(unicron())
 #})
-output$behaviors<-renderPlot({
+output$syndrome<-renderPlot({
 cyborg() %>% 
   ggplot(aes(x=Behavior_B, y=Behavior_C))+
   geom_point()+
