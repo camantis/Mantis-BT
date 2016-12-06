@@ -4,10 +4,10 @@
   #Tem
   library(shinythemes)
   ui<- fluidPage(theme=shinytheme("darkly"),
-  mainPanel(
+  titlePanel ("CA Mantis"),
   #Tem
   tabsetPanel(
-    tabPanel("Connect","Connect to Database"),
+  tabPanel("Connect","Connect to Database",
     sidebarLayout(
       sidebarPanel(
         textInput("postgresDBname", "Enter Database Name"),
@@ -21,8 +21,8 @@
       mainPanel(
         hr(),
         textOutput("DoneConnect")
-      )),
-  tabPanel("welcome","Welcome to the CA Mantis Shiny App"),
+      ))),
+  tabPanel("welcome","Welcome to the CA Mantis Shiny App",
   sidebarLayout(
     sidebarPanel(),
     mainPanel(
@@ -51,11 +51,10 @@
       p("Finally, individuals were exposed to a novel prey in the form of a fiddler crab.
         Latency to begin approaching the crab and time it took to ellicit a predatory
         strike was recorded.")
-      )
-      ),
+      ))),
   
   #TEMP
-  tabPanel("Searching for Syndromes", "Check two behaviors to look for syndromes"),
+  tabPanel("Searching for Syndromes", "Check two behaviors to look for syndromes",
   sidebarLayout(
     sidebarPanel(
       br(),
@@ -68,15 +67,10 @@
     mainPanel(
       hr(),
       plotOutput("syndrome")
-    ))
-  ,
+    ))),
   
-  
-  
-  
-
-    tabPanel("Behavioral differences","Compare mean and variation of behavioral traits"),
-    sidebarLayout(
+  tabPanel("Behavioral differences","Compare mean and variation of behavioral traits",
+  sidebarLayout(
     sidebarPanel(
       br(),
       img(src="male.jpg",height=300,width=300),
@@ -89,8 +83,6 @@
         hr(),
         plotOutput("variation")
         
-      )
+      )))
 )
-)
-)
-)
+)               
